@@ -28,11 +28,8 @@ export const trending = (req, res) => {
   return res.render("home", { pageTitle: "Home", videos });
 };
 export const see = (req, res) => {
-  console.log(req.params);
   const { id } = req.params;
-  console.log("Show Video", id);
   const video = videos[id - 1];
-  console.log(video);
   return res.render("watch", { pageTitle: `Watching ${video.title}` });
 };
 
