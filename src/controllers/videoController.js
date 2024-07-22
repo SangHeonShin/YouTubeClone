@@ -12,15 +12,8 @@ console.log("finished");
 */
 
 export const home = async (req, res) => {
-  try {
-    console.log("start");
-    const videos = await Video.find({});
-    console.log(videos);
-    console.log("finished");
-    return res.render("home", { pageTitle: "Home", videos });
-  } catch (error) {
-    return res.render("server-error", { error });
-  }
+  const videos = await Video.find({});
+  res.render("home", { pageTitle: "Home", videos });
 };
 export const watch = (req, res) => {
   const { id } = req.params;
