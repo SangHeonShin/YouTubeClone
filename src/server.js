@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: "Hello!",
-    reasave: true,
-    saveUninitialized: true,
+    reasave: false,
+    saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: "mongodb://127.0.0.1:27017/YouTubeClone",
     }),
