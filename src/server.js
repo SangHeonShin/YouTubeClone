@@ -15,13 +15,15 @@ app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
 
+console.log(process.env.COOKIE_SECRET);
+
 app.use(
   session({
-    secret: "Hello!",
+    secret: process.env.COOKIE_SECRET,
     reasave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: "mongodb://127.0.0.1:27017/YouTubeClone",
+      mongoUrl: process.env.DB_URL,
     }),
   })
 );
