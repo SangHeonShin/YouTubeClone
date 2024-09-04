@@ -221,17 +221,19 @@ export const getEdit = (req, res) => {
 export const postEdit = async (req, res) => {
   const {
     session: {
-      user: { _id },
+      user: { _id, avatarUrl },
     },
     body: { name, email, username, location },
+    file,
   } = req;
+  // console.log(file);
 
   //중복 확인
   const existingUser = await User.findOne({
     _id: { $ne: _id }, //현재 사용자 id는 제외함
     $or: [{ email }, { username }], //email이나 username 중 하나라도 현재 사용자가 아닌 다른 사용자가 존재하는지 확인하는 코드
   });
-  console.log(existingUser);
+  // console.log(existingUser);
   if (existingUser) {
     let errorMessage = "";
     if (existingUser.email === email) {
@@ -250,6 +252,7 @@ export const postEdit = async (req, res) => {
     const updatedUser = await User.findByIdAndUpdate(
       _id,
       {
+        avatarUrl: file ? file.path : avatarUrl,
         name,
         email,
         username,
