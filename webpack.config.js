@@ -11,7 +11,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: "xxx/main.js",
+    filename: "js/main.js",
     path: path.resolve(__dirname, "assets"),
     clean: true,
   },
