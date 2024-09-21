@@ -103,10 +103,6 @@ const handleMouseLeave = () => {
   controlsTimeout = setTimeout(hideControls, 3000);
 };
 
-const changeVideoTime = (seconds) => {
-  video.currentTime += seconds;
-};
-
 const handleSpacePress = (event) => {
   if (event.code === "Space") {
     handlePlayClick();
