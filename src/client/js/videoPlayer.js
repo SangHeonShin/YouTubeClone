@@ -104,7 +104,8 @@ const handleMouseLeave = () => {
 };
 
 const handleSpacePress = (event) => {
-  if (event.code === "Space") {
+  if (event.target.id !== "textarea" && event.code === "Space") {
+    console.log(event.target);
     handlePlayClick();
     if (controlsSpaceTimeout) {
       clearTimeout(controlsSpaceTimeout);
